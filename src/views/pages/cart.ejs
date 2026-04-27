@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Tu Carrito | MiEcommerce</title>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <main>
+            <div class="cart-main">
+                <div class="go-back">
+                    <a href="/">&larr; Volver</a>
+                </div>
+                <h1>Producto en el Carrito</h1>
+                <section class="cart-product-section">
+                    <% cart.forEach(item=> { %>
+                        <div class="cart-item">
+                            <div class="cart-thumbnail">
+                                <img src="<%= item.imagen %>" alt="<%= item.nombre %>" class="cart-item-image">
+                                <h3 class="cart-item-name">
+                                    <%= item.nombre %>
+                                </h3>
+
+                            </div>
+
+                            <div class="cart-actions">
+                                <button class="cart-btn-delete">Eliminar</button>
+
+                                <div class="cart-btn-quantity-container">
+
+                                    <form action="/cart/decrease/<%= item.id %>" method="POST"
+                                        style="margin: 0; display: flex;">
+                                        <button type="submit" class="cart-btn-decrease">-</button>
+                                    </form>
+
+                                    <span class="cart-item-quantity">
+                                        <%= item.cantidad %>
+                                    </span>
+
+                                    <form action="/cart/increase/<%= item.id %>" method="POST"
+                                        style="margin: 0; display: flex;">
+                                        <button type="submit" class="cart-btn-increase">+</button>
+                                    </form>
+
+                                </div>
+
+                                <div class="cart-item-price">
+                                    <span> $<%= item.precio %></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <% }) %>
+                </section>
+                <section class="cart-total-section">
+                    <h3>Total a pagar: $<%= totalGeneral %></h3>
+                    <a href="/checkout" class="checkout-btn">Ir a pagar</a>
+                </section>
+            </div>
+        </main>
+        <%- include('../partials/footer') %>
+</body>
+
+</html>
