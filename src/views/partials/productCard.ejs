@@ -1,44 +1,49 @@
 <% products.forEach(product=> { %>
     <% if(product.categoria===categoria) { %>
-        <a href="/products/<%= product.id %>" class="product-card">
-            <% if(product.image && product.image.trim() !=='' ){ %>
-                <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
-                <% } else { %>
-                    <img src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
-                        alt="Imagen no disponible" class="product-image">
+        <%if(product.id===id) {%>
+            <%}else{%>
+                <a href="/products/<%= product.id %>" class="product-card">
+                    <% if(product.image && product.image.trim() !=='' ){ %>
+                        <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
+                        <% } else { %>
+                            <img src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
+                                alt="Imagen no disponible" class="product-image">
+                            <% } %>
+                                <div class="product-data">
+                                    <h3 class="product-name">
+                                        <%= product.name %>
+                                    </h3>
+
+                                    <p class="product-price">$<%= product.price.toFixed(2) %>
+                                    </p>
+
+                                </div>
+                </a>
+                <%}%>
+
                     <% } %>
-                        <div class="product-data">
-                            <h3 class="product-name">
-                                <%= product.name %>
-                            </h3>
-
-                            <p class="product-price">$<%= product.price.toFixed(2) %>
-                            </p>
-
-                        </div>
-        </a>
-        <% } %>
-            <% }); %>
+                        <% }); %>
 
 
-                <% products.forEach(product=> { %>
-                    <% if(categoria==="all" ) { %>
-                        <a href="/products/<%= product.id %>" class="product-card">
+                            <% products.forEach(product=> { %>
+                                <% if(categoria==="all" ) { %>
+                                    <a href="/products/<%= product.id %>" class="product-card">
 
-                            <% if(product.image && product.image.trim() !=='' ){ %>
-                                <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
-                                <% } else { %>
-                                    <img src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
-                                        alt="Imagen no disponible" class="product-image">
+                                        <% if(product.image && product.image.trim() !=='' ){ %>
+                                            <img src="<%= product.image %>" alt="<%= product.name %>"
+                                                class="product-image">
+                                            <% } else { %>
+                                                <img src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
+                                                    alt="Imagen no disponible" class="product-image">
+                                                <% } %>
+
+                                                    <div class="product-data">
+                                                        <h3 class="product-name">
+                                                            <%= product.name %>
+                                                        </h3>
+                                                        <p class="product-price">$<%= product.price.toFixed(2) %>
+                                                        </p>
+                                                    </div>
+                                    </a>
                                     <% } %>
-
-                                        <div class="product-data">
-                                            <h3 class="product-name">
-                                                <%= product.name %>
-                                            </h3>
-                                            <p class="product-price">$<%= product.price.toFixed(2) %>
-                                            </p>
-                                        </div>
-                        </a>
-                        <% } %>
-                            <% }); %>
+                                        <% }); %>

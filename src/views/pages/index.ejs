@@ -42,15 +42,15 @@
                 <section class="product-section">
                     <h2 class="product-section-title">Te puede interesar</h2>
                     <div class="products-container">
-                        <%- include('../partials/productCard', { products, categoria: "bebida" }) %>
+                        <%- include('../partials/productCard', { products, categoria: "bebida",id:null }) %>
                     </div>
                 </section>
 
                 <section class="product-section">
                     <h2 class="product-section-title">Los mas pedidos</h2>
                     <div class="products-container">
-                        <%- include('../partials/productCard', { products, categoria: "alcohol" }) %>
-                            <%- include('../partials/productCard', { products, categoria: "comida" }) %>
+                        <%- include('../partials/productCard', { products, categoria: "alcohol",id:null  }) %>
+                            <%- include('../partials/productCard', { products, categoria: "comida",id:null  }) %>
                     </div>
                 </section>
 
