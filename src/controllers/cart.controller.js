@@ -91,7 +91,7 @@ const verCarrito = (req, res) => {
                 id: productoReal.id,
                 nombre: productoReal.name,
                 precio: productoReal.price,
-                imagen: productoReal.image || '/img/default.jpg', 
+                imagen: productoReal.image || 'https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg', 
                 cantidad: item.quantity,
                 subtotal: subtotal
             };

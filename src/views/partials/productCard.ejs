@@ -1,32 +1,44 @@
-<% products.forEach(product => { %>
-    <% if(product.categoria === categoria) { %>
+<% products.forEach(product=> { %>
+    <% if(product.categoria===categoria) { %>
         <a href="/products/<%= product.id %>" class="product-card">
-            <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
-            <div class="product-data">
-                <h3 class="product-name">
-                    <%= product.name %>
-                </h3>
+            <% if(product.image && product.image.trim() !=='' ){ %>
+                <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
+                <% } else { %>
+                    <img src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
+                        alt="Imagen no disponible" class="product-image">
+                    <% } %>
+                        <div class="product-data">
+                            <h3 class="product-name">
+                                <%= product.name %>
+                            </h3>
 
-                <p class="product-price">$<%= product.price.toFixed(2) %></p>
+                            <p class="product-price">$<%= product.price.toFixed(2) %>
+                            </p>
 
-            </div>
+                        </div>
         </a>
-    <% } %>
-<% }); %>
+        <% } %>
+            <% }); %>
 
 
-<% products.forEach(product => { %>
-    <% if(categoria === "all") { %>
-        <a href="/products/<%= product.id %>" class="product-card">
-            <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
-            <div class="product-data">
-                <h3 class="product-name">
-                    <%= product.name %>
-                </h3>
+                <% products.forEach(product=> { %>
+                    <% if(categoria==="all" ) { %>
+                        <a href="/products/<%= product.id %>" class="product-card">
 
-                <p class="product-price">$<%= product.price.toFixed(2) %></p>
+                            <% if(product.image && product.image.trim() !=='' ){ %>
+                                <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
+                                <% } else { %>
+                                    <img src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
+                                        alt="Imagen no disponible" class="product-image">
+                                    <% } %>
 
-            </div>
-        </a>
-    <% } %>
-<% }); %>
+                                        <div class="product-data">
+                                            <h3 class="product-name">
+                                                <%= product.name %>
+                                            </h3>
+                                            <p class="product-price">$<%= product.price.toFixed(2) %>
+                                            </p>
+                                        </div>
+                        </a>
+                        <% } %>
+                            <% }); %>

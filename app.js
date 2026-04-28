@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 const categorias = require("./public/js/categories");
-const products = require("./public/js/products");
+const products = require("./src/data/products.json");
 const authRouter = require('./src/routes/auth.router');
 const productRouter = require('./src/routes/product.router');
 const cartRouter = require('./src/routes/cart.router');

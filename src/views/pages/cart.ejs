@@ -24,15 +24,22 @@
                         <p>¡Agregá productos para empezar tu compra!</p>
                     </section>
                     <% } else { %>
-
                         <section class="cart-product-section">
                             <% cart.forEach(item=> { %>
                                 <div class="cart-item">
                                     <div class="cart-thumbnail">
-                                        <img src="<%= item.imagen %>" alt="<%= item.nombre %>" class="cart-item-image">
-                                        <h3 class="cart-item-name">
-                                            <%= item.nombre %>
-                                        </h3>
+
+                                        <%if(item.imagen){%>
+                                            <img src="<%= item.imagen %>" alt="<%= item.nombre %>">
+
+                                            <%} else {%>
+                                                <img src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
+                                                    class="cart-item-image" alt="<%= item.nombre %>">
+                                                <%}%>
+
+                                                    <h3 class="cart-item-name">
+                                                        <%= item.nombre %>
+                                                    </h3>
                                     </div>
 
                                     <div class="cart-actions">

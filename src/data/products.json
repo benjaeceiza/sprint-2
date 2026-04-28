@@ -73,8 +73,8 @@
         "id": 6,
         "name": "Botella de Blue Label",
         "price": 30.00, 
-        "image": "/images/products/blue-label.webp",
-        "thumbnails": [
+        "image": "",
+        "thumbnails": [ 
             "/images/products/blue-label.webp",
             "https://jumboargentina.vtexassets.com/arquivos/ids/791034/Whisky-Johnnie-Walker-Blue-Label-Tif-750-Whisky-Johnnie-Walker-Blue-Label-Botella-750ml-3-247761.jpg?v=638283369763370000",
             "https://dcdn-us.mitiendanube.com/stores/001/152/625/products/j-walker-blue1-e86b869f1eeeeed48b15882571117532-480-0.webp"

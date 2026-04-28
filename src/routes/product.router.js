@@ -5,7 +5,7 @@ const router = express.Router();
 module.exports = router;
 
 const {getProductById, getRandomProducts} = require("../../public/js/getProducts");
-const products = require("../../public/js/products");
+const products = require("../data/products.json");
 const categorias = require("../../public/js/categories");
 
 // Página de un producto en particular

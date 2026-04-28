@@ -36,8 +36,15 @@
                                     <% }) %>
                             </div>
                             <div class="product-detail-main-image-container">
-                                <img src="<%= product.image %>" alt="<%= product.name %>"
-                                    class="product-detail-main-image">
+
+                                <% if(product.image){%> <img src="<%= product.image %>" alt="<%= product.name %>"
+                                        class="product-detail-main-image">
+
+                                    <%}else{%>
+                                        <img class="product-detail-main-image"
+                                            src="https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg"
+                                            alt="Blue label">
+                                        <%}%>
                             </div>
                         </section>
 

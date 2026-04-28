@@ -1,4 +1,4 @@
-const products = require('./products');
+const products = require('../../src/data/products.json');
 
 
 const getProductById = (id) => {
