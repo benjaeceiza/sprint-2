@@ -55,10 +55,12 @@
                                 </div>
                             </div>
 
-                            <form class="product-detail-action-form" action="/cart/add" method="POST">
+                            <form class="product-detail-action-form" action="/cart/agregar" method="POST">
                                 <input type="hidden" name="productId" value="<%= product.id %>">
-                                <button type="submit" class="product-detail-add-to-cart-btn">Agregar al
-                                    Carrito</button>
+
+                                <input type="hidden" name="quantity" value="1">
+
+                                <button type="submit" class="product-detail-add-to-cart-btn">Agregar al Carrito</button>
                             </form>
 
                             <div class="product-detail-description">
