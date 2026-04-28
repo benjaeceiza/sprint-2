@@ -1020,7 +1020,7 @@ main {
 }
 
 
-.cart-btn-empty:hover{
+.cart-btn-empty:hover {
     background-color: white;
     color: red;
     transition: all .3s;
@@ -1307,6 +1307,53 @@ main {
         gap: 0;
     }
 }
+
+
+
+/* CHECKOUT VACIO */
+
+.check-container {
+    text-align: center;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.check-container h1{
+    padding: 20px;
+    font-size: clamp(20px, 2vw ,80px);
+}
+
+.btn-container-check{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn-container-check a{
+  border: 0;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  font-size: small;
+  cursor: pointer;
+  border: 2px solid var(--primary-color);
+  text-decoration: none;
+}
+
+
+.btn-container-check a:hover{
+    transition: all .3s;
+    background-color: white;
+    color: var(--primary-color);
+}
+
+
 
 /* FOOTER */
 
