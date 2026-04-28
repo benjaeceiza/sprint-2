@@ -13,7 +13,7 @@ const categorias = [
     },
     {
         id: 3,
-        name: 'ropa',
+        name: 'hogar',
         icon: "/images/sofa.png"
     },
     {

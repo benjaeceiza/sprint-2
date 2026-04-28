@@ -37,9 +37,18 @@ app.get('/checkout',
 );
 
 app.get('/', (req, res) => res.render('pages/index', { categorias, products }));
+
+app.get("/categories/:category", (req,res) => {
+
+    const {category} = req.params;
+
+    res.render("pages/categoriesFiltred",{products,category,categorias})
+})
+
 app.use("/auth", authRouter);
 app.use("/products", productRouter);
 app.use("/cart", cartRouter);
+
 
 app.use((req, res) => {
     res.status(404).send("Página no encontrada");
