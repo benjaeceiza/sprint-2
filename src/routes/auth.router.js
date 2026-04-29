@@ -8,7 +8,7 @@ module.exports = router;
 
 //Página de registro para new users (register.ejs)
 router.get('/register',
-    (req, res) => res.render('pages/register')
+    (req, res) => res.render('pages/register',{ layout: false })
 );
 
 
@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
 
 //Página de inicio de sesión (login.ejs)
 router.get('/login',
-    (req, res) => res.render('pages/login')
+    (req, res) => res.render('pages/login',{ layout: false })
 );
 
 
