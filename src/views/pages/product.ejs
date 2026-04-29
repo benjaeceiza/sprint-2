@@ -67,7 +67,12 @@
 
                                 <input type="hidden" name="quantity" value="1">
 
-                                <button type="submit" class="product-detail-add-to-cart-btn">Agregar al Carrito</button>
+                                
+                                <% if (product.stock===0) {%>
+                                    <p class="btn-add-cart-bloqued">Agregar al Carrito</p>
+                                    <%} else{%>
+                                        <button type="submit" class="product-detail-add-to-cart-btn">Agregar al Carrito</button>
+                                <%}%>
                             </form>
 
                             <div class="product-detail-description">
@@ -83,7 +88,8 @@
                 <section class="product-section">
                     <h2 class="product-section-title">Productos relacionados</h2>
                     <div class="products-container">
-                        <%- include('../partials/productCard', { products, categoria: product.categoria,id:product.id }) %>
+                        <%- include('../partials/productCard', { products, categoria: product.categoria,id:product.id })
+                            %>
                     </div>
                 </section>
 

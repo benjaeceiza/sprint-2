@@ -524,7 +524,7 @@ main {
     overflow: hidden;
     cursor: pointer;
     text-decoration: none;
-
+    position: relative;
 }
 
 .product-card img {
@@ -537,6 +537,32 @@ main {
 
 }
 
+.without-stock-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    background-color: rgba(0, 0, 0, 0.288);
+
+}
+
+.without-stock-card {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    font-size: small;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 20px;
+    color: white;
+    margin: 15px;
+}
+
 .product-data {
     padding: 10px;
     background-color: var(--primary-color);
@@ -546,7 +572,7 @@ main {
     align-items: flex-start;
     justify-content: space-around;
     height: 50px;
-    z-index: 2;
+    z-index: 12;
 }
 
 .product-name {
@@ -715,6 +741,30 @@ main {
 .product-detail-add-to-cart-btn {
     width: 100%;
     padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+     transition: all .3s;
+
+}
+
+.product-detail-add-to-cart-btn:hover {
+    box-shadow: 0px 5px 10px 2px var(--primary-color);
+    transform: translateY(-5px);
+    transition: all .3s;
+}
+
+
+
+.btn-add-cart-bloqued{
+        width: 100%;
+    padding: 15px;
     background-color: #5a5a5a;
     color: white;
     border: none;
@@ -724,11 +774,8 @@ main {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-
-}
-
-.product-detail-add-to-cart-btn:hover {
-    background-color: #404040;
+    cursor: not-allowed;
+    text-align: center;
 }
 
 /* --- Descripción --- */
@@ -1323,33 +1370,33 @@ main {
     gap: 20px;
 }
 
-.check-container h1{
+.check-container h1 {
     padding: 20px;
-    font-size: clamp(20px, 2vw ,80px);
+    font-size: clamp(20px, 2vw, 80px);
 }
 
-.btn-container-check{
+.btn-container-check {
     display: flex;
     justify-content: center;
     gap: 20px;
     align-items: center;
 }
 
-.btn-container-check a{
-  border: 0;
-  padding: 10px;
-  border-radius: 20px;
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: bold;
-  font-size: small;
-  cursor: pointer;
-  border: 2px solid var(--primary-color);
-  text-decoration: none;
+.btn-container-check a {
+    border: 0;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    cursor: pointer;
+    border: 2px solid var(--primary-color);
+    text-decoration: none;
 }
 
 
-.btn-container-check a:hover{
+.btn-container-check a:hover {
     transition: all .3s;
     background-color: white;
     color: var(--primary-color);
