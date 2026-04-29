@@ -30,6 +30,23 @@ app.use((req, res, next) => {
     next();
 });
 
+//Contador de productos del carrito
+app.use((req, res, next) => {
+   
+    let cantidadTotal = 0;
+
+    if (req.session && req.session.cart) {
+        cantidadTotal = req.session.cart.reduce((acumulador, item) => {
+            return acumulador + item.quantity;
+        }, 0);
+    }
+
+  
+    res.locals.cantidadTotalCarrito = cantidadTotal;
+
+    next();
+});
+
 
 //Página de pago
 app.get('/checkout',
@@ -44,6 +61,9 @@ app.get("/categories/:category", (req,res) => {
 
     res.render("pages/categoriesFiltred",{products,category,categorias})
 })
+
+
+
 
 app.use("/auth", authRouter);
 app.use("/products", productRouter);

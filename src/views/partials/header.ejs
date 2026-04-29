@@ -8,7 +8,10 @@
         <div class="cart-user-container">
             <a href="/cart" class="cart-container">
                 <img src="/images/bag.png" alt="Bolsa de compras">
-                <span class="cart-count">1</span>
+                
+                 <% if (cantidadTotalCarrito > 0) { %>
+                    <span class="cart-count"> <%= cantidadTotalCarrito %></span>
+                <% } %>
             </a>
 
             <a href="/auth/login" class="user-container">

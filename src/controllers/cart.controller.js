@@ -79,7 +79,7 @@ const verCarrito = (req, res) => {
     let total = 0;
 
     const cartDetallado = cartSession.map(item => {
-    
+
         const productoReal = productos.find(p => String(p.id) === String(item.productId));
 
         if (productoReal) {
@@ -91,7 +91,7 @@ const verCarrito = (req, res) => {
                 id: productoReal.id,
                 nombre: productoReal.name,
                 precio: productoReal.price,
-                imagen: productoReal.image || 'https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg', 
+                imagen: productoReal.image || 'https://st2.depositphotos.com/2586633/46477/v/950/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg',
                 cantidad: item.quantity,
                 subtotal: subtotal
             };
@@ -103,12 +103,15 @@ const verCarrito = (req, res) => {
     res.render('pages/cart', { cart: cartDetallado, totalGeneral: total });
 }
 
+
+
 module.exports = {
     verCarrito,
     vaciarCarrito,
     sumarCantidad,
     restarCantidad,
     eliminarProducto,
-    agregarProducto
+    agregarProducto,
+
 
 }
