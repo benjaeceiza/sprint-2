@@ -2,7 +2,7 @@
     <ul class="categories-list">
         <% for (const categoria of categorias) { %>
             <li class="categories-item">
-                <a class="categories-link" href="/categories/<%= categoria.name %>">
+                <a class="categories-link" href="/products?categoria=<%= categoria.name %>">
                     <img src="<%= categoria.icon %>" alt="<%= categoria.name %>">
                     <span><%= categoria.name %></span>
                 </a>

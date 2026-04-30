@@ -1,13 +1,16 @@
 const productService = require('../services/productsService');
 
-// 1. VER LISTADO COMPLETO O FILTRADO
 const verListado = (req, res) => {
+
+    // Atrapamos la Query si es que hay
     const categoriaQuery = req.query.categoria; 
+    const sortQuery = req.query.sort; 
+    const searchQuery = req.query.search; 
     
     let productosMostrar = [];
     let tituloCategoria = 'Todos los productos';
 
-    // Si el usuario buscó una categoría, usamos el servicio para filtrar
+    // 1. Filtrar por categoría
     if (categoriaQuery && categoriaQuery !== 'all') {
         productosMostrar = productService.getProductsByCategory(categoriaQuery);
         tituloCategoria = categoriaQuery;
@@ -16,14 +19,19 @@ const verListado = (req, res) => {
         tituloCategoria = 'all';
     }
 
-    // Traemos las categorías para el sidebar o header
+    // 2. ORDENAR LOS PRODUCTOS (La magia sucede acá)
+    if (sortQuery) {
+        productosMostrar = productService.sortProducts(productosMostrar, sortQuery);
+    }
+
     const categorias = productService.getCategories();
 
-    // Renderizamos la vista de la tienda
+    // 3. Renderizamos la vista y le pasamos el currentSort
     res.render('pages/productList', { 
         products: productosMostrar, 
         category: tituloCategoria,
-        categorias: categorias 
+        categorias: categorias,
+        currentSort: sortQuery 
     });
 }
 
@@ -69,7 +77,32 @@ const verDetalle = (req, res) => {
     });
 }
 
+const buscarProductos = (req, res) => {
+    const queryBuscada = req.query.query || '';
+    const sortQuery = req.query.sort; 
+
+  
+    let productosEncontrados = productService.searchProducts(queryBuscada);
+
+   
+    if (sortQuery) {
+        productosEncontrados = productService.sortProducts(productosEncontrados, sortQuery);
+    }
+
+    const categorias = productService.getCategories();
+
+ 
+    res.render('pages/productList', { 
+        products: productosEncontrados, 
+        category: `Resultados para: "${queryBuscada}"`, 
+        categorias: categorias,
+        currentSort: sortQuery,
+        searchQuery: queryBuscada 
+    });
+}
+
 module.exports = {
     verListado,
-    verDetalle
+    verDetalle,
+    buscarProductos
 }
