@@ -1,6 +1,7 @@
 
 const express = require("express");
 const session = require('express-session');
+const expressLayouts = require('express-ejs-layouts');
 const port = 3000;
 
 const app = express();
@@ -11,8 +12,11 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
+app.use(expressLayouts); 
+app.set('layout', 'layouts/main'); 
 
-const categorias = require("./public/js/categories");
+
+const categorias = require("./src/data/categories.json");
 const products = require("./src/data/products.json");
 const authRouter = require('./src/routes/auth.router');
 const productRouter = require('./src/routes/product.router');
@@ -27,6 +31,23 @@ app.use(session({
 
 app.use((req, res, next) => {
     res.locals.session = req.session;
+    next();
+});
+
+//Contador de productos del carrito
+app.use((req, res, next) => {
+   
+    let cantidadTotal = 0;
+
+    if (req.session && req.session.cart) {
+        cantidadTotal = req.session.cart.reduce((acumulador, item) => {
+            return acumulador + item.quantity;
+        }, 0);
+    }
+
+  
+    res.locals.cantidadTotalCarrito = cantidadTotal;
+
     next();
 });
 
@@ -45,14 +66,23 @@ app.get("/categories/:category", (req,res) => {
     res.render("pages/categoriesFiltred",{products,category,categorias})
 })
 
+
+
+
 app.use("/auth", authRouter);
 app.use("/products", productRouter);
 app.use("/cart", cartRouter);
 
 
 app.use((req, res) => {
-    res.status(404).send("Página no encontrada");
+    res.status(404).render("pages/404");
 });
+
+app.use((err, req, res, next) => {
+    console.error('ERROR DETECTADO:', err.stack);
+
+    res.status(500).render('pages/500');
+})
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
