@@ -55,6 +55,8 @@ const verCarrito = (req, res) => {
     res.render('pages/cart', { cart: cartDetallado, totalGeneral: total });
 }
 
+
+
 module.exports = {
     verCarrito,
     vaciarCarrito,
