@@ -43,10 +43,35 @@ form.addEventListener('submit', function (event) {
     const forbiddenStrings = ['password', '1234', 'qwerty', 'nombre_del_sitio', name.toLowerCase()];
     const containsForbidden = forbiddenStrings.some(str => password.toLowerCase().includes(str));
 
-    if (password.length < 8 || !hasLetter || !hasNumber || !hasSpecialChar || containsForbidden || password === email) {
-        document.getElementById('message-error').innerText = 'La contraseña no cumple con los requisitos de seguridad.';
+    if (password.length < 8) {
+        document.getElementById('message-error').innerText = 'La contraseña debe tener al menos 8 caracteres';
         hasErrors = true;
-        return;
+        return
+    }
+    if (!hasLetter) {
+        document.getElementById('message-error').innerText = 'La contraseña debe tener al menos 1 letra';
+        hasErrors = true;
+        return
+    }
+    if (!hasNumber) {
+        document.getElementById('message-error').innerText = 'La contraseña debe tener al menos 1 número';
+        hasErrors = true;
+        return
+    }
+    if (!hasSpecialChar) {
+        document.getElementById('message-error').innerText = 'La contraseña debe tener al menos 1 caracter especial';
+        hasErrors = true;
+        return
+    }
+    if (password === email) {
+        document.getElementById('message-error').innerText = 'La contraseña debe ser distinta al email';
+        hasErrors = true;
+        return
+    }
+    if (containsForbidden) {
+        document.getElementById('message-error').innerText = "Ingrese una contraseña distinta";
+        hasErrors = true;
+        return
     }
 
     if (!confirmPassword) {
@@ -60,6 +85,9 @@ form.addEventListener('submit', function (event) {
         hasErrors = true;
         return;
     }
+
+
+
 
     // 4. Si hay errores, cortamos acá. El form no se envía.
     if (hasErrors) {

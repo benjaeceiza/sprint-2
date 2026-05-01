@@ -10,7 +10,11 @@ const productController = require('../controllers/product.controller');
 
 router.get('/', productController.verListado);
 
+// Ruta para buscar productos por su nombre
+router.get('/search', productController.buscarProductos);
+
 // Ruta para ver el detalle de un producto específico
 router.get('/:id', productController.verDetalle);
+
 
 module.exports = router;

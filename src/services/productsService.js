@@ -9,7 +9,6 @@ const normalizeId = (id) => {
     if (Number.isInteger(parsedId) && parsedId > 0) {
         return parsedId; 
     }
-
     return null;
 
 }
@@ -19,6 +18,16 @@ const getAllProducts = () => {
     return products;
 }
 
+const searchProducts = (searchTerm) => {
+    if (!searchTerm) return []; 
+    
+    const terminoMinusc = searchTerm.toLowerCase();
+    
+    return products.filter(product => 
+        product.name.toLowerCase().includes(terminoMinusc)
+    );
+};
+
 // Busca un producto por ID 
 const getProductById = (id) => {
     return products.find(product => product.id === id);
@@ -26,7 +35,7 @@ const getProductById = (id) => {
 
 // Filtra por categoría
 const getProductsByCategory = (categoria) => {
-    // Si la categoría es "all" o no viene nada, devolvemos todo
+
     if (!categoria || categoria === 'all') return products;
 
     return products.filter(product => product.categoria.toLowerCase() === categoria.toLowerCase());
@@ -36,6 +45,17 @@ const getProductsByCategory = (categoria) => {
 const getCategories = () => {
     return categories;
 }
+
+//Trae productos de forma ascendente o descendente
+const sortProducts = (productsArray, sortOrder) => {
+    let sorted = [...productsArray]; 
+    if (sortOrder === 'asc') {
+        sorted.sort((a, b) => a.price - b.price); // Menor a Mayor
+    } else if (sortOrder === 'desc') {
+        sorted.sort((a, b) => b.price - a.price); // Mayor a Menor
+    }
+    return sorted;
+};
 
 // Trae productos aleatorios
 const getRandomProducts = (productsArray, count = 4) => {
@@ -53,5 +73,7 @@ module.exports = {
     getProductsByCategory,
     getRandomProducts,
     getCategories,
-    normalizeId
+    normalizeId,
+    sortProducts,
+    searchProducts
 };
